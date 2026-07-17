@@ -33,6 +33,11 @@ footer .brand-logo::before {
   width: 94px;
   height: 88px;
   flex-basis: 94px;
+  background-color: #f7f3eb;
+  background-size: 78px auto;
+  border: 1px solid rgba(181, 139, 92, .45);
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
 }
 
 footer .brand-logo b { font-size: 24px; }
