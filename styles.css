@@ -25,10 +25,10 @@
 .hero-image{background-image:url('assets/mieke-hero.webp')}
 @media(min-width:901px){.hero{background:var(--paper)}.hero-image{left:42%;background-position:48% center}.hero-shade{background:linear-gradient(90deg,var(--paper) 0%,var(--paper) 42%,rgba(247,243,235,.12) 59%,transparent 76%)}.hero-copy{left:6vw;max-width:510px}.hero h1{font-size:clamp(64px,7vw,108px)}.hero-copy:before{display:none}.hero-note{color:white}}
 @media(max-width:900px){.brand-network span{display:none}.brand-network{gap:14px;overflow-x:auto;justify-content:flex-start;padding:0 14px;white-space:nowrap}.brand-network a{font-size:8px}.hero-image{background-position:57% center}.avenue{padding:85px 24px}.avenue-links{grid-template-columns:1fr}.avenue-links a{border-right:0;border-bottom:1px solid var(--line)}.avenue-links a:last-child{border-bottom:0}}
+.about-photo.mieke-photo{background-image:linear-gradient(180deg,rgba(36,53,45,.03),rgba(36,53,45,.18)),url('assets/mieke-hero.webp');background-size:cover;background-position:center}.about-photo.mieke-photo:before,.about-photo.mieke-photo:after{display:none}
 
 /* Exact Avena Lombok type system: Italiana + DM Sans */
 body{font-family:'DM Sans',sans-serif;font-weight:300;letter-spacing:-.01em}
 h1,h2,h3,.logo,.quote-section p,.date strong,.credentials span,.monogram,.avenue-links strong,footer p{font-family:'Italiana',serif!important;font-weight:400!important}
 nav,.topbar,.eyebrow,.section-no,.num,.tag,.btn,.nav-cta,.text-link,.arrow-link,.event p,.hero-note,.credentials small,footer div,footer small{font-family:'DM Sans',sans-serif}
 p{font-weight:300}.eyebrow,.section-no,.num,.tag,.topbar{font-weight:400;letter-spacing:.18em}
-
