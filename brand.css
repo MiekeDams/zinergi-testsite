@@ -18,7 +18,10 @@
   width: 82px;
   height: 76px;
   flex: 0 0 82px;
-  background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 100'%3E%3Cg fill='none' stroke='%23434a37' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M89 19C72 3 42 1 22 17C5 31 4 62 19 80C31 94 55 97 74 90'/%3E%3Ccircle cx='53' cy='27' r='7'/%3E%3Cpath d='M45 33c-3 5-2 11 1 15c2 3 1 7-2 10c-6 5-13 8-14 16c-1 8 5 15 13 18M61 33c3 5 2 11-1 15c-2 3-1 7 2 10c6 5 13 8 14 16c1 8-5 15-13 18M43 92c5-8 15-8 20 0c5 8 15 8 20 0c-5-8-15-8-20 0c-5 8-15 8-20 0Z'/%3E%3C/g%3E%3Cg fill='none' stroke='%23b58b5c' stroke-width='2.7' stroke-linecap='round'%3E%3Cpath d='M70 91c12-5 22-13 29-25'/%3E%3Cpath d='M82 84c3-7 7-9 12-10M89 78c0-6 2-10 6-14M95 70c4-5 8-6 12-6'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: var(--buddha-logo, none);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .brand-logo b {
