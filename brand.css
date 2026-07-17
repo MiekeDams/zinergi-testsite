@@ -15,12 +15,12 @@
 
 .brand-logo img {
   display: block !important;
-  width: 66px;
-  height: 66px;
-  flex: 0 0 66px;
-  border-radius: 50%;
+  width: 78px;
+  height: 72px;
+  flex: 0 0 78px;
+  border-radius: 0;
   object-fit: cover;
-  object-position: center;
+  object-position: center 34%;
   mix-blend-mode: multiply;
 }
 
@@ -30,9 +30,9 @@
 }
 
 footer .brand-logo img {
-  width: 76px;
-  height: 76px;
-  flex-basis: 76px;
+  width: 92px;
+  height: 86px;
+  flex-basis: 92px;
 }
 
 footer .brand-logo b { font-size: 24px; }
@@ -40,9 +40,9 @@ footer .brand-logo b { font-size: 24px; }
 @media (max-width: 850px) {
   .brand-logo { gap: 9px; }
   .brand-logo img {
-    width: 54px;
-    height: 54px;
-    flex-basis: 54px;
+    width: 66px;
+    height: 60px;
+    flex-basis: 66px;
   }
   .brand-logo b {
     font-size: 17px;
@@ -52,9 +52,9 @@ footer .brand-logo b { font-size: 24px; }
 
 @media (max-width: 380px) {
   .brand-logo img {
-    width: 48px;
-    height: 48px;
-    flex-basis: 48px;
+    width: 58px;
+    height: 54px;
+    flex-basis: 58px;
   }
   .brand-logo b { font-size: 15px; }
 }
