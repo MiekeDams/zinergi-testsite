@@ -1,8 +1,8 @@
 const products=[
-{id:'biotica',name:'Biotica Expert',price:39.95,cat:'supplement',label:'Darmen',img:'assets/products/biotica.webp',desc:'Probiotische ondersteuning voor een gevarieerd en veerkrachtig darmmicrobioom.',badge:'Bestseller'},
-{id:'fiber',name:'Fiber Expert',price:32.50,cat:'supplement',label:'Darmen',img:'assets/products/fiber.webp',desc:'Prebiotische vezels als dagelijkse voeding voor je goede darmbacteriën.'},
-{id:'magnesium',name:'Magnesium Expert',price:19.95,cat:'supplement',label:'Energie & rust',img:'assets/products/magnesium.webp',desc:'Ondersteunt ontspanning, spieren en een normale energiestofwisseling.',badge:'Populair'},
-{id:'multi',name:'Multi Compleet',price:27,cat:'supplement',label:'Dagelijkse basis',img:'assets/products/multi.webp',desc:'Een complete dagelijkse basis met zorgvuldig gekozen vitamines en mineralen.'},
+{id:'biotica',name:'Biotica Expert',price:39.95,cat:'supplement',label:'Darmen',img:'assets/products/biotica-avena.webp',desc:'Probiotische ondersteuning voor een gevarieerd en veerkrachtig darmmicrobioom.',badge:'Bestseller'},
+{id:'fiber',name:'Fiber Expert',price:32.50,cat:'supplement',label:'Darmen',img:'assets/products/fiber-avena.webp',desc:'Prebiotische vezels als dagelijkse voeding voor je goede darmbacteriën.'},
+{id:'magnesium',name:'Magnesium Expert',price:19.95,cat:'supplement',label:'Energie & rust',img:'assets/products/magnesium-avena.webp',desc:'Ondersteunt ontspanning, spieren en een normale energiestofwisseling.',badge:'Populair'},
+{id:'multi',name:'Multi Compleet',price:27,cat:'supplement',label:'Dagelijkse basis',img:'assets/products/multi-avena.webp',desc:'Een complete dagelijkse basis met zorgvuldig gekozen vitamines en mineralen.'},
 {id:'leaky',name:'Leaky Gut darmonderzoek',price:159,cat:'onderzoek',label:'Onderzoek',img:'assets/products/leaky.webp',desc:'Gericht laboratoriumonderzoek dat inzicht geeft in de doorlaatbaarheid van de darmwand.'},
 {id:'darmpakket',name:'Onderzoekspakket darmklachten',price:245,cat:'onderzoek',label:'Onderzoek',img:'assets/products/darmpakket.webp',desc:'Een verdiepend startpunt om oorzaken achter terugkerende darmklachten te onderzoeken.'},
 {id:'hormoontest',name:'Oestrogeen metabolieten hormoontest',price:105,cat:'onderzoek',label:'Hormonen',img:'assets/products/hormoontest.webp',desc:'Krijg inzicht in hoe jouw lichaam oestrogenen verwerkt en uitscheidt.'},
@@ -28,4 +28,3 @@ document.querySelector('.dialog-close').onclick=()=>document.getElementById('pro
 document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelector('[data-filter].active').classList.remove('active');b.classList.add('active');filter=b.dataset.filter;render()});document.getElementById('sort').onchange=e=>{sort=e.target.value;render()};
 const searchbar=document.getElementById('searchbar');document.getElementById('searchToggle').onclick=()=>{searchbar.classList.add('open');document.getElementById('search').focus()};document.getElementById('searchClose').onclick=()=>searchbar.classList.remove('open');document.getElementById('search').oninput=e=>{query=e.target.value;render()};
 render();renderCart();
-
