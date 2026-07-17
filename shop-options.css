@@ -14,6 +14,11 @@
 .subscription-settings label { display: grid; grid-template-columns: 1fr 150px; align-items: center; gap: 12px; font-size: 11px; margin: 8px 0; }
 .subscription-settings select { background: var(--paper); border: 1px solid var(--line); padding: 8px; }
 .detail-copy .price s { font-size: 14px; }
+.refill-preview { position: absolute; right: 14px; bottom: 14px; width: 38%; padding: 7px; background: rgba(247,243,235,.94); border: 1px solid rgba(45,52,47,.16); box-shadow: 0 12px 28px rgba(45,52,47,.15); z-index: 2; }
+.refill-preview img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; mix-blend-mode: normal; }
+.refill-preview span { display: block; padding: 7px 3px 2px; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+.refill-preview small { color: var(--taupe); font-size: 8px; }
+.product:hover .refill-preview img { transform: none; }
 @media (max-width: 850px) {
   .welcome-product { grid-column: 1 / -1; }
   .welcome-product .product-media { aspect-ratio: 4 / 3; }
