@@ -8,9 +8,9 @@ const products=[
 {id:'hormoontest',name:'Oestrogeen metabolieten hormoontest',price:105,cat:'onderzoek',label:'Hormonen',img:'assets/systemisch.webp',desc:'Krijg inzicht in hoe jouw lichaam oestrogenen verwerkt en uitscheidt.'},
 {id:'consult',name:'Orthomoleculair 1e consult',price:150,cat:'traject',label:'Persoonlijke begeleiding',img:'assets/mieke-hero.webp',desc:'Een persoonlijk consult waarin klachten, voeding, leefstijl en eerdere uitslagen samenkomen.',badge:'Persoonlijk'},
 {id:'resetdarmen',name:'Reset je Darmen',price:599,cat:'traject',label:'3 maanden',img:'assets/voeding.webp',desc:'Een persoonlijk traject naar meer rust in je buik, betere vertering en duurzame energie.'},
-{id:'ademreset',name:'Adem Reset Traject',price:650,cat:'traject',label:'Ademwerk',img:'https://zinergi.nl/cdn/shop/files/ademresettraject_720x.jpg?v=1773057156',desc:'Zak uit je hoofd en herstel de verbinding met je lichaam en zenuwstelsel.'},
-{id:'cacao',name:'Cacao, Adem & Opstelling',price:99,cat:'event',label:'6 september 2026',img:'https://zinergi.nl/cdn/shop/files/Cacoa_adem_fam_vraagsteller_720x.jpg?v=1773407964',desc:'Een bijzondere middag waarin cacao, verbonden ademhaling en familieopstellingen samenkomen.'},
-{id:'familie',name:'Familieopstelling',price:99,cat:'event',label:'18 oktober 2026',img:'https://zinergi.nl/cdn/shop/files/Familieopstellingvraag_720x.jpg?v=1752585142',desc:'Maak zichtbaar wat onder de oppervlakte speelt en laat beweging ontstaan waar het vastzit.'}
+{id:'ademreset',name:'Adem Reset Traject',price:650,cat:'traject',label:'Ademwerk',img:'assets/adem-reset.webp',desc:'Zak uit je hoofd en herstel de verbinding met je lichaam en zenuwstelsel.'},
+{id:'cacao',name:'Cacao, Adem & Opstelling',price:99,cat:'event',label:'6 september 2026',img:'assets/cacao-opstelling.webp',desc:'Een bijzondere middag waarin cacao, verbonden ademhaling en familieopstellingen samenkomen.'},
+{id:'familie',name:'Familieopstelling',price:99,cat:'event',label:'18 oktober 2026',img:'assets/familieopstelling.webp',desc:'Maak zichtbaar wat onder de oppervlakte speelt en laat beweging ontstaan waar het vastzit.'}
 ];
 let filter='all',query='',sort='featured',cart=JSON.parse(localStorage.getItem('zinergi-cart')||'[]');
 const grid=document.getElementById('productGrid'),empty=document.getElementById('empty');
@@ -28,4 +28,3 @@ document.querySelector('.dialog-close').onclick=()=>document.getElementById('pro
 document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelector('[data-filter].active').classList.remove('active');b.classList.add('active');filter=b.dataset.filter;render()});document.getElementById('sort').onchange=e=>{sort=e.target.value;render()};
 const searchbar=document.getElementById('searchbar');document.getElementById('searchToggle').onclick=()=>{searchbar.classList.add('open');document.getElementById('search').focus()};document.getElementById('searchClose').onclick=()=>searchbar.classList.remove('open');document.getElementById('search').oninput=e=>{query=e.target.value;render()};
 render();renderCart();
-
