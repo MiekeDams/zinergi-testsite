@@ -14,3 +14,7 @@ play.addEventListener('click',async()=>{
 });
 video.addEventListener('play',()=>wrap.classList.add('playing'));
 video.addEventListener('ended',()=>wrap.classList.remove('playing'));
+if(new URLSearchParams(location.search).get('autoplay')==='1'){
+  video.volume=.9;
+  video.play().then(()=>wrap.classList.add('playing')).catch(()=>{});
+}
