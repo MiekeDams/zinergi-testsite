@@ -3,7 +3,7 @@
 @media(max-width:520px){.topbar{font-size:9px}.hero h1{font-size:48px}.hero-actions{align-items:flex-start;flex-direction:column;gap:18px}.intro-main h2,.offer-head h2,.about-copy h2,.agenda h2,.shop-strip h2,.contact h2{font-size:46px}.event{grid-template-columns:1fr;gap:10px}.shop-strip{padding:70px 24px}footer{grid-template-columns:1fr}footer div{margin-top:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee div{animation:none}.reveal{opacity:1;transform:none;transition:none}}
 
-/* Japandi art direction â€” inspired by the calm rhythm of Avena Living */
+/* Japandi art direction — inspired by the calm rhythm of Avena Living */
 :root{--cream:#eee8de;--paper:#f7f3eb;--ink:#2d342f;--sage:#747d72;--clay:#92775a;--gold:#b6a181;--line:rgba(45,52,47,.18)}
 .logo,.hero h1,.intro-main h2,.offer-head h2,.about-copy h2,.agenda h2,.shop-strip h2,.contact h2,.offer-card h3,.quote-section p,.date strong,footer p,.monogram{font-family:'Italiana',serif;font-weight:400}
 .nav-wrap{background:rgba(247,243,235,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
