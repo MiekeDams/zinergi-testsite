@@ -3,7 +3,7 @@ const products=[
 {id:'fiber',name:'Fiber Expert',price:32.50,cat:'supplement',label:'Darmen',img:'https://zinergi.nl/cdn/shop/products/Fiber-Expert-0649-proef_720x.jpg?v=1670346187',desc:'Prebiotische vezels als dagelijkse voeding voor je goede darmbacteriën.'},
 {id:'magnesium',name:'Magnesium Expert',price:19.95,cat:'supplement',label:'Energie & rust',img:'https://zinergi.nl/cdn/shop/products/Magnesium-0544-NEW-2500px_720x.jpg?v=1670346645',desc:'Ondersteunt ontspanning, spieren en een normale energiestofwisseling.',badge:'Populair'},
 {id:'multi',name:'Multi Compleet',price:27,cat:'supplement',label:'Dagelijkse basis',img:'assets/voeding.webp',desc:'Een complete dagelijkse basis met zorgvuldig gekozen vitamines en mineralen.'},
-{id:'leaky',name:'Leaky Gut darmonderzoek',price:159,cat:'onderzoek',label:'Onderzoek',img:'https://zinergi.nl/cdn/shop/files/Leaky_Gut_720x.jpg?v=1739874426',desc:'Gericht laboratoriumonderzoek dat inzicht geeft in de doorlaatbaarheid van de darmwand.'},
+{id:'leaky',name:'Leaky Gut darmonderzoek',price:159,cat:'onderzoek',label:'Onderzoek',img:'assets/voeding.webp',desc:'Gericht laboratoriumonderzoek dat inzicht geeft in de doorlaatbaarheid van de darmwand.'},
 {id:'darmpakket',name:'Onderzoekspakket darmklachten',price:245,cat:'onderzoek',label:'Onderzoek',img:'assets/voeding.webp',desc:'Een verdiepend startpunt om oorzaken achter terugkerende darmklachten te onderzoeken.'},
 {id:'hormoontest',name:'Oestrogeen metabolieten hormoontest',price:105,cat:'onderzoek',label:'Hormonen',img:'assets/systemisch.webp',desc:'Krijg inzicht in hoe jouw lichaam oestrogenen verwerkt en uitscheidt.'},
 {id:'consult',name:'Orthomoleculair 1e consult',price:150,cat:'traject',label:'Persoonlijke begeleiding',img:'assets/mieke-hero.webp',desc:'Een persoonlijk consult waarin klachten, voeding, leefstijl en eerdere uitslagen samenkomen.',badge:'Persoonlijk'},
@@ -28,3 +28,4 @@ document.querySelector('.dialog-close').onclick=()=>document.getElementById('pro
 document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelector('[data-filter].active').classList.remove('active');b.classList.add('active');filter=b.dataset.filter;render()});document.getElementById('sort').onchange=e=>{sort=e.target.value;render()};
 const searchbar=document.getElementById('searchbar');document.getElementById('searchToggle').onclick=()=>{searchbar.classList.add('open');document.getElementById('search').focus()};document.getElementById('searchClose').onclick=()=>searchbar.classList.remove('open');document.getElementById('search').oninput=e=>{query=e.target.value;render()};
 render();renderCart();
+
