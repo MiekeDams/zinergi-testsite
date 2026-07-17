@@ -12,7 +12,6 @@ const products=[
 {id:'cacao',name:'Cacao, Adem & Opstelling',price:99,cat:'event',label:'6 september 2026',img:'assets/products/cacao.webp',desc:'Een bijzondere middag waarin cacao, verbonden ademhaling en familieopstellingen samenkomen.'},
 {id:'familie',name:'Familieopstelling',price:99,cat:'event',label:'18 oktober 2026',img:'assets/products/familie.webp',desc:'Maak zichtbaar wat onder de oppervlakte speelt en laat beweging ontstaan waar het vastzit.'}
 ];
-products.forEach(product=>{product.img+=`${product.img.includes('?')?'&':'?'}v=img8`});
 let filter='all',query='',sort='featured',cart=JSON.parse(localStorage.getItem('zinergi-cart')||'[]');
 const grid=document.getElementById('productGrid'),empty=document.getElementById('empty');
 const money=n=>new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'}).format(n);
