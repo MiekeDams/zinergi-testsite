@@ -36,4 +36,5 @@
   .subscription-settings label { grid-template-columns: 1fr; }
   .welcome-product .product-media { aspect-ratio: 4 / 5; }
 }
-
+.monthly-product .product-media { aspect-ratio: 4 / 5; }
+@media (max-width: 520px) { .monthly-product .product-media { aspect-ratio: 4 / 5; } }
