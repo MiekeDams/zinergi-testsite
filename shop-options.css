@@ -21,6 +21,7 @@
 .product:hover .refill-preview img { transform: none; }
 .monthly-product { grid-column: auto; }
 .monthly-product .product-media { aspect-ratio: 1 / 1; }
+.monthly-product .product-media img { mix-blend-mode: normal; transition: none; transform: none !important; }
 .bundle-grid { width: 100%; height: 100%; display: grid; grid-template-columns: repeat(4, 1fr); background: #e8e1d5; }
 .bundle-grid img { width: 100%; height: 100%; object-fit: cover; border-right: 1px solid rgba(247,243,235,.7); mix-blend-mode: normal; }
 .bundle-grid img:last-child { border-right: 0; }
