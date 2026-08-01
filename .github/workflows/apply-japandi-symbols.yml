@@ -1,0 +1,48 @@
+name: Apply Japandi Symbols
+on:
+  push:
+    branches: [develop]
+    paths:
+      - 'assets/zinergi-japandi-symbols.css'
+      - 'assets/zinergi-japandi-symbols.js'
+      - '.github/workflows/apply-japandi-symbols.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+      - name: Inject shared Zinergi design system
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          css='<link rel="stylesheet" href="/assets/zinergi-japandi-symbols.css">'
+          js='<script src="/assets/zinergi-japandi-symbols.js"></script>'
+          roots=[Path('alpha'),Path('sprint2')]
+          changed=[]
+          for root in roots:
+            if not root.exists(): continue
+            for p in root.rglob('*.html'):
+              s=p.read_text()
+              old=s
+              if css not in s: s=s.replace('</head>',css+'</head>')
+              if js not in s: s=s.replace('</body>',js+'</body>')
+              # retire old health route wherever it still appears
+              s=s.replace('href="/wearables/"','href="/sprint2/health/"')
+              if s!=old:
+                p.write_text(s)
+                changed.append(str(p))
+          print('Updated:', *changed, sep='\n- ')
+          PY
+      - name: Commit generated app updates
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add alpha sprint2
+            git commit -m "feat: roll out Japandi score symbols across app"
+            git push origin develop
+          fi
