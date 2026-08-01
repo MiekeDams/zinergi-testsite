@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/"
+  to = "/voedingsapp/"
+  status = 302
+
+[[redirects]]
+  from = "/app"
+  to = "/voedingsapp/"
+  status = 302
