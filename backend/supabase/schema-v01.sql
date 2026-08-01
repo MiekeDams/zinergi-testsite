@@ -1,0 +1,22 @@
+-- Zinergi Backend & Accounts v0.1
+-- Run in a NEW Supabase project only after reviewing privacy/security configuration.
+create extension if not exists pgcrypto;
+create type public.app_role as enum ('client','coach','admin');
+create table public.profiles (id uuid primary key references auth.users(id) on delete cascade, role app_role not null default 'client', display_name text, language text not null default 'nl' check(language in ('nl','en','id')), status text not null default 'active', created_at timestamptz not null default now(), updated_at timestamptz not null default now());
+create table public.coach_clients (coach_id uuid not null references public.profiles(id) on delete cascade, client_id uuid not null references public.profiles(id) on delete cascade, status text not null default 'active', assigned_at timestamptz not null default now(), primary key(coach_id,client_id));
+create table public.client_data (id uuid primary key default gen_random_uuid(), client_id uuid not null references public.profiles(id) on delete cascade, entity_type text not null, entity_key text not null default 'current', payload jsonb not null default '{}'::jsonb, created_by uuid references public.profiles(id), created_at timestamptz not null default now(), updated_at timestamptz not null default now(), unique(client_id,entity_type,entity_key));
+create table public.consent_records (id uuid primary key default gen_random_uuid(), client_id uuid not null references public.profiles(id) on delete cascade, consent_type text not null, version text not null, status text not null check(status in ('granted','withdrawn')), granted_at timestamptz, withdrawn_at timestamptz, created_at timestamptz not null default now());
+create table public.audit_events (id bigint generated always as identity primary key, actor_id uuid references public.profiles(id), subject_id uuid references public.profiles(id), event_type text not null, entity_type text, entity_id text, occurred_at timestamptz not null default now());
+alter table public.profiles enable row level security; alter table public.coach_clients enable row level security; alter table public.client_data enable row level security; alter table public.consent_records enable row level security; alter table public.audit_events enable row level security;
+create or replace function public.my_role() returns app_role language sql stable security definer set search_path=public as $$ select role from public.profiles where id=auth.uid() $$;
+create or replace function public.is_assigned(client uuid) returns boolean language sql stable security definer set search_path=public as $$ select exists(select 1 from public.coach_clients where coach_id=auth.uid() and client_id=client and status='active') $$;
+create policy profiles_self_read on public.profiles for select using(id=auth.uid() or public.my_role()='admin' or (public.my_role()='coach' and public.is_assigned(id)));
+create policy profiles_self_update on public.profiles for update using(id=auth.uid() or public.my_role()='admin') with check(id=auth.uid() or public.my_role()='admin');
+create policy assignments_read on public.coach_clients for select using(coach_id=auth.uid() or client_id=auth.uid() or public.my_role()='admin');
+create policy client_data_read on public.client_data for select using(client_id=auth.uid() or public.my_role()='admin' or (public.my_role()='coach' and public.is_assigned(client_id)));
+create policy client_data_client_insert on public.client_data for insert with check(client_id=auth.uid() and created_by=auth.uid());
+create policy client_data_client_update on public.client_data for update using(client_id=auth.uid() or public.my_role()='admin' or (public.my_role()='coach' and public.is_assigned(client_id))) with check(client_id=auth.uid() or public.my_role()='admin' or (public.my_role()='coach' and public.is_assigned(client_id)));
+create policy consent_self_read on public.consent_records for select using(client_id=auth.uid() or public.my_role()='admin');
+create policy consent_self_insert on public.consent_records for insert with check(client_id=auth.uid());
+-- audit_events deliberately has no browser write policy; write audit events through trusted server/edge functions.
+create index client_data_client_type_idx on public.client_data(client_id,entity_type); create index consent_client_idx on public.consent_records(client_id,consent_type);
