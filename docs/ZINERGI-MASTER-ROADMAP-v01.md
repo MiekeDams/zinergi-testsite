@@ -1,6 +1,6 @@
-# Zinergi Master Roadmap v0.1
+# Zinergi Master Roadmap v0.2
 
-Deze roadmap vult de bestaande productontwikkeling aan met de bedrijfs-, juridische, governance- en schaalbaarheidsfundamenten die nodig zijn om Zinergi veilig als professioneel gezondheidsplatform te laten groeien.
+Deze roadmap vult de bestaande productontwikkeling aan met de bedrijfs-, juridische, governance-, financiële en schaalbaarheidsfundamenten die nodig zijn om Zinergi veilig als professioneel gezondheidsplatform te laten groeien.
 
 ## Reeds gebouwde/testfase
 - Cliëntfunctionaliteit, onboarding, profiel/doelen en voortgang
@@ -32,6 +32,29 @@ Deze roadmap vult de bestaande productontwikkeling aan met de bedrijfs-, juridis
 - Security review en vóór opschaling onafhankelijke pentest
 - Vendor-exit/export/restore-test naar andere PostgreSQL-omgeving
 - Geen echte gezondheidsdata vóór technische en privacy GO
+
+### Infrastructuurkosten — planningsbudget
+De onderstaande bedragen zijn budgetranges, geen vaste leveranciersprijzen. Actuele tarieven worden vóór iedere opschalingsfase opnieuw gecontroleerd.
+
+| Groeifase | Richtbudget per maand | Uitgangspunt |
+| --- | ---: | --- |
+| Development | €0–€30 | fictieve data, beperkte belasting |
+| Kleine echte pilot | €25–€75 | tientallen tot honderden cliënten |
+| Eerste commerciële fase | €50–€200 | honderden tot enkele duizenden gebruikers |
+| Rond 10.000 actieve gebruikers | €100–€500+ | sterk afhankelijk van documenten, verkeer en back-upniveau |
+| Grotere professionele omgeving | €600–€1.500+ | uitgebreidere security, monitoring, support/SLA en redundantie |
+
+Kostenbewaking wordt opgesplitst in database compute/opslag, document storage, dataverkeer, authenticatie, back-up/PITR, monitoring/logging, e-mail/SMS, security tooling en later AI-verbruik.
+
+Belangrijke ontwerpregel: beveiliging wordt nooit verlaagd om binnen een hostingbudget te blijven. Bij groei wordt eerst gemeten en geoptimaliseerd; daarna wordt capaciteit opgeschaald.
+
+### Capaciteits- en kostenreviews
+- Voor pilot: actuele Supabase- en aanvullende infrastructuurprijzen controleren.
+- Bij 1.000 actieve cliënten: werkelijk opslag- en verkeersgebruik meten en forecast actualiseren.
+- Bij 5.000 actieve cliënten: performance, database compute, storage en monitoring opnieuw dimensioneren.
+- Bij 10.000 actieve cliënten: volledige infrastructuur-TCO en vendorvergelijking uitvoeren.
+- Daarna minimaal ieder kwartaal FinOps/capaciteitsreview tijdens sterke groei.
+- AI-kosten apart meten per coach, cliënt, organisatie en AI-functie zodra AI wordt geactiveerd.
 
 ## Fase B — Legal & GDPR
 - Vastleggen welke rechtspersoon Zinergi-platform/software exploiteert
@@ -129,6 +152,7 @@ Certificeringssysteem:
 - Entitlements los modelleren van betaling
 - Duidelijk beleid bij opzegging
 - Financiële rapportage
+- Infrastructurele kostprijs per actieve coach/cliënt volgen voor gezonde SaaS-marges
 
 ## Fase H — Intellectueel eigendom & merk
 - Eigendom Zinergi-software en broncode vastleggen
@@ -150,6 +174,7 @@ Certificeringssysteem:
 - Storing- en onderhoudscommunicatie
 - Continuïteit bij uitval coach/organisatie
 - Procedure bij beëindiging Zinergi-account/praktijk
+- Budget reserveren voor redundantie, monitoring en herstelvoorzieningen bij commerciële opschaling
 
 ## Fase J — AI Governance — later bouwen
 Nog geen autonome AI-coach activeren. Architectuur reserveren voor:
@@ -165,6 +190,7 @@ Nog geen autonome AI-coach activeren. Architectuur reserveren voor:
 - AI mag geen onbevoegde diagnose/voorschriftbeslissing nemen
 - Evaluatie EU AI Act en overige toepasselijke regelgeving vóór productie
 - Mogelijkheid AI-functionaliteit per organisatie/cliënt uit te schakelen
+- AI-verbruik en kostprijs als aparte variabele kostenlaag monitoren; limieten/budgetten per abonnement of organisatie mogelijk maken
 
 ## Fase K — Pilot & schaalvergroting
 1. Supabase integratie met uitsluitend fictieve data
@@ -174,11 +200,12 @@ Nog geen autonome AI-coach activeren. Architectuur reserveren voor:
 5. Private storage test
 6. Export/verwijdering/consent-intrekking test
 7. Back-up & restore test
-8. Security/privacy/legal GO
-9. Kleine gecontroleerde pilot met echte cliënten
-10. Feedback, incidentreview en performance review
-11. Gefaseerde opschaling
-12. Pentest/security review vóór grote commerciële uitrol
+8. Eerste werkelijke infrastructuurkosten meten en budgetforecast actualiseren
+9. Security/privacy/legal GO
+10. Kleine gecontroleerde pilot met echte cliënten
+11. Feedback, incidentreview en performance review
+12. Gefaseerde opschaling
+13. Pentest/security review vóór grote commerciële uitrol
 
 ## Niet-onderhandelbare ontwerpregels
 1. Security & privacy by design.
@@ -191,3 +218,4 @@ Nog geen autonome AI-coach activeren. Architectuur reserveren voor:
 8. AI wordt later als gecontroleerde laag toegevoegd, niet als ongecontroleerde medische beslisser.
 9. Protocollen en professionele content zijn versieerbaar en auditeerbaar.
 10. Juridische, privacy- en security-review zijn harde gates vóór brede livegang.
+11. Hosting- en infrastructuurkosten worden gemeten en per groeifase herijkt; budgetdruk mag nooit leiden tot verzwakking van beveiliging.
