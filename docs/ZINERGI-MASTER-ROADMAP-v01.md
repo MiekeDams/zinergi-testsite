@@ -1,4 +1,4 @@
-# Zinergi Master Roadmap v0.2
+# Zinergi Master Roadmap v0.3
 
 Deze roadmap vult de bestaande productontwikkeling aan met de bedrijfs-, juridische, governance-, financiële en schaalbaarheidsfundamenten die nodig zijn om Zinergi veilig als professioneel gezondheidsplatform te laten groeien.
 
@@ -153,6 +153,7 @@ Certificeringssysteem:
 - Duidelijk beleid bij opzegging
 - Financiële rapportage
 - Infrastructurele kostprijs per actieve coach/cliënt volgen voor gezonde SaaS-marges
+- AI Client als afzonderlijke add-on/tier kunnen prijzen zodat variabele AI-kosten niet onbeperkt in een vast basisabonnement terechtkomen
 
 ## Fase H — Intellectueel eigendom & merk
 - Eigendom Zinergi-software en broncode vastleggen
@@ -176,7 +177,7 @@ Certificeringssysteem:
 - Procedure bij beëindiging Zinergi-account/praktijk
 - Budget reserveren voor redundantie, monitoring en herstelvoorzieningen bij commerciële opschaling
 
-## Fase J — AI Governance — later bouwen
+## Fase J — AI Governance & Cost Control — later bouwen
 Nog geen autonome AI-coach activeren. Architectuur reserveren voor:
 - Welke cliëntdata AI wel/niet mag gebruiken
 - Doelbinding en toestemming
@@ -190,7 +191,61 @@ Nog geen autonome AI-coach activeren. Architectuur reserveren voor:
 - AI mag geen onbevoegde diagnose/voorschriftbeslissing nemen
 - Evaluatie EU AI Act en overige toepasselijke regelgeving vóór productie
 - Mogelijkheid AI-functionaliteit per organisatie/cliënt uit te schakelen
-- AI-verbruik en kostprijs als aparte variabele kostenlaag monitoren; limieten/budgetten per abonnement of organisatie mogelijk maken
+
+### AI-kostenmodel — planningsrange
+Voor businessplanning hanteren we voorlopig een veilige richtwaarde van circa €1–€3 AI-kosten per actieve AI-cliënt per maand bij normaal gebruik. Dit is een planningsbuffer, geen gegarandeerde kostprijs; werkelijke kosten worden gemeten.
+
+| Actieve AI-cliënten | Indicatief AI-budget per maand |
+| ---: | ---: |
+| 100 | €100–€300 |
+| 1.000 | €1.000–€3.000 |
+| 5.000 | €5.000–€15.000 |
+| 10.000 | €10.000–€30.000 |
+
+### AI Cost Ledger — verplicht vóór commerciële AI
+Iedere AI-call registreert minimaal:
+- timestamp
+- organisatie-ID
+- coach-ID waar van toepassing
+- cliënt-ID/pseudonieme usage-ID waar passend
+- AI-functie/use case
+- model/provider
+- inputtokens
+- outputtokens
+- cached tokens waar van toepassing
+- berekende providerkosten
+- interne kostprijs
+- abonnement/tier/entitlement
+- request status en foutstatus
+
+Het admin-dashboard moet hierdoor kosten kunnen tonen per dag, maand, organisatie, coach, cliënt/use-ID, AI-functie en model.
+
+### No-surprise AI budget guardrails
+- Globaal maandelijks AI-budget voor heel Zinergi instelbaar.
+- Budget per organisatie instelbaar.
+- Budget/usage allowance per abonnementstier instelbaar.
+- Rate limits per cliënt en coach.
+- Dagelijkse en maandelijkse usage caps.
+- Waarschuwingen bij bijvoorbeeld 50%, 75%, 90% en 100% van budget.
+- Bij 100% standaard geen automatische overschrijding: AI pauzeert of valt terug naar een vooraf goedgekeurde goedkopere modus, afhankelijk van functie en veiligheid.
+- Geen providerinstelling die onbeperkt automatisch kan opschalen zonder intern plafond.
+- Expliciete admin-goedkeuring nodig voor tijdelijke budgetverhoging boven ingestelde harde limiet.
+- Kostenanomaliedetectie: onverwachte stijging in tokens, calls of kosten markeren en AI-functie indien nodig automatisch beperken.
+- Per model een maximum context/output-tokenlimiet.
+- Goedkope modellen/router gebruiken voor eenvoudige taken; zwaardere modellen alleen waar inhoudelijk nodig.
+- Caching en samenvattingen gebruiken om steeds opnieuw versturen van volledige dossiers te beperken.
+- Batch/achtergrondtaken krijgen een apart budget en mogen interactieve zorgfuncties niet verdringen.
+- Providerprijswijzigingen moeten eerst in de interne prijstabel worden verwerkt voordat nieuwe kostenprognoses betrouwbaar zijn.
+
+### AI financiële GO/NO-GO
+Commerciële AI gaat pas live wanneer:
+1. Cost Ledger volledig werkt.
+2. Harde budgetcaps technisch getest zijn.
+3. Waarschuwingen en admin-dashboard werken.
+4. Modelrouting is getest.
+5. Kostprijs per kern-use-case gemeten is met fictieve/pilotdata.
+6. Marge per abonnement/tier doorgerekend is.
+7. Er een kill switch bestaat waarmee Zinergi AI-providerverkeer onmiddellijk kan stoppen zonder de rest van het platform uit te schakelen.
 
 ## Fase K — Pilot & schaalvergroting
 1. Supabase integratie met uitsluitend fictieve data
@@ -206,6 +261,7 @@ Nog geen autonome AI-coach activeren. Architectuur reserveren voor:
 11. Feedback, incidentreview en performance review
 12. Gefaseerde opschaling
 13. Pentest/security review vóór grote commerciële uitrol
+14. Vóór AI-pilot: AI Cost Ledger, budgetcaps, alerts en kill switch testen
 
 ## Niet-onderhandelbare ontwerpregels
 1. Security & privacy by design.
@@ -219,3 +275,4 @@ Nog geen autonome AI-coach activeren. Architectuur reserveren voor:
 9. Protocollen en professionele content zijn versieerbaar en auditeerbaar.
 10. Juridische, privacy- en security-review zijn harde gates vóór brede livegang.
 11. Hosting- en infrastructuurkosten worden gemeten en per groeifase herijkt; budgetdruk mag nooit leiden tot verzwakking van beveiliging.
+12. AI mag nooit onbeperkt providerkosten genereren: cost ledger, harde caps, alerts en kill switch zijn verplicht vóór commerciële activatie.
